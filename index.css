@@ -1,3 +1,9 @@
+/* Google Fonts
+font-family: 'Permanent Marker', cursive;
+font-family: 'Changa', sans-serif;
+font-family: 'Sacramento', cursive;
+*/
+
 body {
 	/* background-color: #B2E9FD; */
 	background-color: black;
@@ -5,12 +11,23 @@ body {
 
 .header h2 {
 	color: #DC4247;
+	font-family: 'Sacramento', cursive;
+	font-size: 200px;
+	padding-top: 20px;
+	background: yellow;
+	background-image: url("Film.png");
+	background-size: 60%;
+	background-repeat: repeat-x;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .header p {
-	color: #50524F;
+	color: darkgoldenrod;
+	font-family: 'Changa', sans-serif;
 }
-
 .results {
 	margin-top: 20px;
 	margin-right: 20px;
