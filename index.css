@@ -28,6 +28,11 @@ body {
 	color: darkgoldenrod;
 	font-family: 'Changa', sans-serif;
 }
+.watchlist-button {
+	border-radius: 50%;
+	background-color: red;
+	color: red;
+}
 .results {
 	margin-top: 20px;
 	margin-right: 20px;
@@ -36,9 +41,10 @@ body {
 	flex-wrap: wrap;
 }
 /* Movie Cards */
-.movies-container {
+.movie {
 	flex: 2;
 	padding-bottom: 30px;
+
 }
 .card-body {
 	background-color: lightblue;
