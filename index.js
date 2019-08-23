@@ -32,6 +32,11 @@
 
 $(document).ready(init) // As soon as the document is ready, the init (initialize) function is ran.
 
+const searchForm = document.getElementById("search-form")//names the search-form location in the DOM
+const searchBar = document.getElementsByClassName("search-bar")
+// var searchString = document.getElementById("search-bar")
+console.log(searchString)
+
 function init () {      //function init
     function renderMovieCards (movieArray) {
 
@@ -47,25 +52,34 @@ function init () {      //function init
                             </div>
                         </div>`
         }
-        console.log(movieData)
+
         const moviesList = movieArray.map(makeMovieCardHTML)
         const finalHTML = moviesList.join('')
         return `${finalHTML}`
     
     }
 
- 
-
-    const searchForm = document.getElementById("search-form")   //names the search-form location in the DOM
-
     searchForm.addEventListener("click", function (evt) {   //listens for a click on the search button
-        evt.preventDefault();   //this prevents the movies from going away once appearing                                 
+        evt.preventDefault();   //this prevents the movies from going away once appearing
+        
+        var searchString = $(".search-bar").value //This should also work. Try it out when you have time
+        var searchString = document.getElementById("search-bar").value
+        console.log(searchString)
+        urlEncodedSearchString = encodeURIComponent(searchString) //you can't put empty spaces in urls, this makes it 
+
+        let moviePromise = axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + urlEncodedSearchString)
+            .then(function(response){
+                console.log(response.data)
+            })
+
+
+        
+
         const results = document.getElementById("results")
         results.innerHTML = renderMovieCards(movieData)     //enters the HTML created above into the
         // addEvent()
     })
 }
-
 // function addEvent() { //We got onclick to work, but it is no longer considered best practices because it mixes html and javascript. No one likes that. 
 //     var container = document.getElementById("results");
 //     results.addEventListener("click", function(event) {
@@ -97,7 +111,6 @@ function saveToWatchList(imdbID) {
 
     //pushes the movie to the watchlist which is now an array
     watchlist.push(movie)
-    console.log(watchlist)
     //turns the watchlist array into a string so that it can be placed back in local storage
     watchlistJSON = JSON.stringify(watchlist)
     //sets our new array as the new storage item
