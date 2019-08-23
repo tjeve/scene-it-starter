@@ -47,7 +47,7 @@ function init () {      //function init
                             </div>
                         </div>`
         }
-        
+        console.log(movieData)
         const moviesList = movieArray.map(makeMovieCardHTML)
         const finalHTML = moviesList.join('')
         return `${finalHTML}`
@@ -75,6 +75,8 @@ function init () {      //function init
 //     }) 
 // }
 
+var watchlist = []
+
 function saveToWatchList(imdbID) {
     //This function needs to save a movie to a list
     var movie = movieData.find(function(currentMovie) { //uses the .find() method to find the current movie in movieData array.
@@ -92,9 +94,10 @@ function saveToWatchList(imdbID) {
     // if (typeof watchlist === "null") {
     //     watchlist = []
     // }
-    var watchlist = []
+
     //pushes the movie to the watchlist which is now an array
     watchlist.push(movie)
+    console.log(watchlist)
     //turns the watchlist array into a string so that it can be placed back in local storage
     watchlistJSON = JSON.stringify(watchlist)
     //sets our new array as the new storage item
