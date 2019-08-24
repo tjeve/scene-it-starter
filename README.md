@@ -1,0 +1,1 @@
+This project for digitalcrafts and its purpose is to practice designing websites and using APIs.

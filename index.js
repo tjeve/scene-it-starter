@@ -34,7 +34,7 @@ $(document).ready(init) // As soon as the document is ready, the init (initializ
 
 const searchForm = document.getElementById("search-form")//names the search-form location in the DOM
 const searchBar = document.getElementsByClassName("search-bar")
-// var searchString = document.getElementById("search-bar")
+var searchString = document.getElementById("search-bar").value
 console.log(searchString)
 
 function init () {      //function init
@@ -52,7 +52,7 @@ function init () {      //function init
                             </div>
                         </div>`
         }
-
+        
         const moviesList = movieArray.map(makeMovieCardHTML)
         const finalHTML = moviesList.join('')
         return `${finalHTML}`
@@ -69,15 +69,19 @@ function init () {      //function init
 
         let moviePromise = axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + urlEncodedSearchString)
             .then(function(response){
-                console.log(response.data)
+                    // console.log(response.data)
+
+                    const results = document.getElementById("results")
+                    results.innerHTML = renderMovieCards(response.data.Search)     //enters the HTML created above into the
+                    // addEvent()
             })
 
 
         
 
-        const results = document.getElementById("results")
-        results.innerHTML = renderMovieCards(movieData)     //enters the HTML created above into the
-        // addEvent()
+        // const results = document.getElementById("results")
+        // results.innerHTML = renderMovieCards(movieData)     //enters the HTML created above into the
+        // // addEvent()
     })
 }
 // function addEvent() { //We got onclick to work, but it is no longer considered best practices because it mixes html and javascript. No one likes that. 
