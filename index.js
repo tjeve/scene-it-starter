@@ -1,6 +1,6 @@
 
 // document.addEventListener('DOMContentLoaded', function() {
-    
+
 //     function renderMovieCards (movieArray) {
 
 //         function makeMovieCardHTML (currentMovie) {
@@ -17,16 +17,16 @@
 //                         </div>
 //                     </div>`
 //         }
-        
+
 //         const moviesList = movieArray.map(makeMovieCardHTML)
 //         const finalHTML = moviesList.join('')
 //         console.log(finalHTML)
 //         return `${finalHTML}`
-    
+
 //     }
 
 //     const results = document.getElementById("results")
-//     results.innerHTML = renderMovieCards(movieData)
+//     results.innerHTML = renderMovieCards(movieData)`
 
 // } )
 
@@ -37,11 +37,11 @@ const searchBar = document.getElementsByClassName("search-bar")
 var searchString = document.getElementById("search-bar").value
 console.log(searchString)
 
-function init () {      //function init
-    function renderMovieCards (movieArray) {
+function init() {      //function init
+    function renderMovieCards(movieArray) {
 
-        function makeMovieCardHTML (currentMovie) {
-                return `<div class="movie">
+        function makeMovieCardHTML(currentMovie) {
+            return `<div class="movie">
                             <div class="card" style="width: 18rem;">
                                 <img class="card-img-top" src="${currentMovie.Poster}" alt="Card image cap">
                                 <div class="card-body">
@@ -52,32 +52,32 @@ function init () {      //function init
                             </div>
                         </div>`
         }
-        
+
         const moviesList = movieArray.map(makeMovieCardHTML)
         const finalHTML = moviesList.join('')
         return `${finalHTML}`
-    
+
     }
 
     searchForm.addEventListener("click", function (evt) {   //listens for a click on the search button
         evt.preventDefault();   //this prevents the movies from going away once appearing
-        
+
         var searchString = $(".search-bar").value //This should also work. Try it out when you have time
         var searchString = document.getElementById("search-bar").value
         console.log(searchString)
         urlEncodedSearchString = encodeURIComponent(searchString) //you can't put empty spaces in urls, this makes it 
 
         let moviePromise = axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + urlEncodedSearchString)
-            .then(function(response){
-                    // console.log(response.data)
+            .then(function (response) {
+                // console.log(response.data)
 
-                    const results = document.getElementById("results")
-                    results.innerHTML = renderMovieCards(response.data.Search)     //enters the HTML created above into the
-                    // addEvent()
+                const results = document.getElementById("results")
+                results.innerHTML = renderMovieCards(response.data.Search)     //enters the HTML created above into the
+                // addEvent()
             })
 
 
-        
+
 
         // const results = document.getElementById("results")
         // results.innerHTML = renderMovieCards(movieData)     //enters the HTML created above into the
@@ -97,7 +97,7 @@ var watchlist = []
 
 function saveToWatchList(imdbID) {
     //This function needs to save a movie to a list
-    var movie = movieData.find(function(currentMovie) { //uses the .find() method to find the current movie in movieData array.
+    var movie = movieData.find(function (currentMovie) { //uses the .find() method to find the current movie in movieData array.
         if (currentMovie.imdbID == imdbID) {
             return true;
         } else {
@@ -120,5 +120,5 @@ function saveToWatchList(imdbID) {
     //sets our new array as the new storage item
     localStorage.setItem('watchlist', watchlistJSON)
     console.log('save to watchlist!', movie)
-    
+
 }
